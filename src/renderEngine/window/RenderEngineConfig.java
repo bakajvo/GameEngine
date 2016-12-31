@@ -1,8 +1,9 @@
 package renderEngine.window;
 
-public class RenderEngineConfig {
-    public static final int WINDOW_WIDTH = 480;
-    public static final int WINDOW_HEIGHT = 640;
+class RenderEngineConfig {
+    static final int WINDOW_WIDTH = 640;
+    static final int WINDOW_HEIGHT = 480;
+    static final String WINDOW_TITLE = "Ashwel's Game Engine";
 
-    public static final int FPS_CAP = 120;
+    static final int FPS_CAP = 120;
 }
