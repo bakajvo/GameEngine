@@ -5,6 +5,8 @@ import renderEngine.Loader;
 import renderEngine.Renderer;
 import renderEngine.StaticShader;
 import renderEngine.models.RawModel;
+import renderEngine.models.TexturedModel;
+import renderEngine.textures.Texture;
 import renderEngine.window.DisplayManager;
 
 public class MainTest01 {
@@ -28,7 +30,16 @@ public class MainTest01 {
                 3, 1, 2
         };
 
-        RawModel model = loader.loadToVAO(vertices, indices);
+        float[] textureCords = {
+                0, 0,
+                0, 1,
+                1, 0,
+                1, 1
+        };
+
+        RawModel rawModel = loader.loadToVAO(vertices, textureCords, indices);
+        Texture texture = new Texture(loader.loadTexture("texture_512x512"));
+        TexturedModel model = new TexturedModel(rawModel, texture);
 
         while (!Display.isCloseRequested()) {
             renderer.prepare();
