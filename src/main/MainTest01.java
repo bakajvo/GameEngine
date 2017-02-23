@@ -1,9 +1,11 @@
 package main;
 
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector3f;
 import renderEngine.Loader;
 import renderEngine.Renderer;
 import renderEngine.StaticShader;
+import renderEngine.entities.Entity;
 import renderEngine.models.RawModel;
 import renderEngine.models.TexturedModel;
 import renderEngine.textures.Texture;
@@ -40,12 +42,13 @@ public class MainTest01 {
         RawModel rawModel = loader.loadToVAO(vertices, textureCords, indices);
         Texture texture = new Texture(loader.loadTexture("texture_512x512"));
         TexturedModel model = new TexturedModel(rawModel, texture);
+        Entity entity = new Entity(model, new Vector3f(-1, 0, 0), 0, 0, 0, 1);
 
         while (!Display.isCloseRequested()) {
             renderer.prepare();
             shader.start();
 
-            renderer.render(model);
+            renderer.render(entity, shader);
 
 
             shader.stop();
