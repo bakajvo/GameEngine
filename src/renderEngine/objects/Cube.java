@@ -1,8 +1,8 @@
 package renderEngine.objects;
 
 import org.lwjgl.util.vector.Vector3f;
-import renderEngine.Loader;
 import renderEngine.entities.Entity;
+import renderEngine.loaders.Loader;
 import renderEngine.models.TexturedModel;
 import renderEngine.textures.Texture;
 

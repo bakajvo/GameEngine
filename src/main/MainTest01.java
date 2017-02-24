@@ -3,11 +3,13 @@ package main;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.Camera;
-import renderEngine.Loader;
 import renderEngine.Renderer;
 import renderEngine.entities.Entity;
-import renderEngine.objects.Cube;
+import renderEngine.loaders.Loader;
+import renderEngine.loaders.ObjLoader;
+import renderEngine.models.TexturedModel;
 import renderEngine.shaders.StaticShader;
+import renderEngine.textures.Texture;
 import renderEngine.window.DisplayManager;
 
 public class MainTest01 {
@@ -20,15 +22,15 @@ public class MainTest01 {
         Renderer renderer = new Renderer(shader);
         Camera camera = new Camera();
 
-        Entity testCube = new Cube(loader, new Vector3f(0, 0, -2)).getEntity();
+        TexturedModel model = new TexturedModel(ObjLoader.loadObjModel("dragon", loader), new Texture(loader.loadTexture("texture_512x512")));
+        Entity dragon = new Entity(model, new Vector3f(0, 0, -20), 0, 0, 0, 1);
 
         while (!Display.isCloseRequested()) {
-            testCube.increaseRotation(1, 1, 0);
             camera.move();
             renderer.prepare();
             shader.start();
             shader.loadViewMatrix(camera);
-            renderer.render(testCube, shader);
+            renderer.render(dragon, shader);
             shader.stop();
             DisplayManager.updateDisplay();
         }
