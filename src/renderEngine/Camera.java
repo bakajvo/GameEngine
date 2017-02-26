@@ -10,7 +10,7 @@ public class Camera {
     private float yaw;
     private float roll;
 
-    private static final float SPEED = 0.02f;
+    private static final float SPEED = 0.04f;
 
     public Camera() {
     }
@@ -27,6 +27,12 @@ public class Camera {
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
             position.x -= SPEED;
+        }
+        if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+            position.y += SPEED;
+        }
+        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+            position.y -= SPEED;
         }
     }
 
