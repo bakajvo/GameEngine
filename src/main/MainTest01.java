@@ -9,6 +9,7 @@ import renderEngine.loaders.Loader;
 import renderEngine.loaders.ObjLoader;
 import renderEngine.models.TexturedModel;
 import renderEngine.render.MasterRenderer;
+import renderEngine.terrain.Terrain;
 import renderEngine.textures.Texture;
 import renderEngine.window.DisplayManager;
 
@@ -26,11 +27,14 @@ public class MainTest01 {
         Entity dragon = new Entity(model, new Vector3f(0, 0, -25), 0, 0, 0, 1);
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
 
+        Terrain terrain = new Terrain(0, -1, loader, new Texture(loader.loadTexture("grass")));
+
         MasterRenderer renderer = new MasterRenderer();
         while (!Display.isCloseRequested()) {
             dragon.increaseRotation(0, 1, 0);
             camera.move();
 
+            renderer.processTerrain(terrain);
             renderer.processEntity(dragon);
 
             renderer.render(light, camera);
