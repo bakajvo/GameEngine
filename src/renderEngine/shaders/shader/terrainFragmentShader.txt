@@ -31,7 +31,7 @@ void main(void) {
     specularFactor = max(specularFactor, 0.0);
 
     float dampedFactor = pow(specularFactor, shineDamper);
-    vec3 finalSpecular = dampedFactor * lightColor;
+    vec3 finalSpecular = dampedFactor * lightColor * reflectivity;
 
     out_Color = vec4(diffuse, 1.0) * texture(textureSampler, pass_textureCoords) + vec4(finalSpecular, 1.0);
 }

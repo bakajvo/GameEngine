@@ -22,10 +22,10 @@ public class MainTest01 {
         Camera camera = new Camera();
 
         TexturedModel model = new TexturedModel(ObjLoader.loadObjModel("dragon", loader), new Texture(loader.loadTexture("silver")));
-//        model.getTexture().setShineDamper(1);
-//        model.getTexture().setReflectivity(10);
+        model.getTexture().setShineDamper(1);
+        model.getTexture().setReflectivity(2);
         Entity dragon = new Entity(model, new Vector3f(0, 0, -25), 0, 0, 0, 1);
-        Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
+        Light light = new Light(new Vector3f(20000, 20000, 2000), new Vector3f(1, 1, 1));
 
         Terrain terrain = new Terrain(0, -1, loader, new Texture(loader.loadTexture("grass")));
 
