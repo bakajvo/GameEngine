@@ -27,7 +27,7 @@ public class MainTest01 {
         Entity dragon = new Entity(model, new Vector3f(0, 0, -25), 0, 0, 0, 1);
         Light light = new Light(new Vector3f(20000, 20000, 2000), new Vector3f(1, 1, 1));
 
-        Terrain terrain = new Terrain(0, -1, loader, new Texture(loader.loadTexture("grass")));
+        Terrain terrain = new Terrain(0, -1, loader, "heightmap", new Texture(loader.loadTexture("grass3")));
 
         MasterRenderer renderer = new MasterRenderer();
         while (!Display.isCloseRequested()) {
